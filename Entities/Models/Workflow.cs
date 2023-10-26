@@ -15,19 +15,11 @@ public class Workflow
 public class Stage
 {
     public string StageName { get; set; } = string.Empty;
+    //TODO validation for stage type
     public bool ShowStage { get; set; }
-}
-
-public class Shortlisting : Stage
-{ 
-
-}
-
-public class VideoInterviewStage : Stage
-{
-    public string VideoInterviewQuestion { get; set; } = string.Empty;
-    public string AdditionalInformation { get; set; } = string.Empty;
+    public string? VideoInterviewQuestion { get; set; }
+    public string? AdditionalInformation { get; set; }
     public int MaxDurationOfVideo { get; set;}
-    public string DurationUnit { get; set; } = string.Empty;
+    public string? DurationUnit { get; set; }
     public int DeadlineForSubmission { get; set; }
 }

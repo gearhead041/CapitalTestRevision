@@ -8,6 +8,7 @@ namespace Services;
 
 internal class ProgramService : IProgramService
 {
+    //TODO error handling and documentation
     private readonly IRepositoryManager repositoryManager;
     private readonly IMapper mapper;
 
@@ -84,15 +85,6 @@ internal class ProgramService : IProgramService
             AdditionalQuestions = (ICollection<Question>)(applicationDto.AdditionalQuestions ?? oldProgram.ApplicationTemplate.AdditionalQuestions),
         };
 
-        if(applicationDto.AdditionalQuestions != null)
-        {
-            foreach (var question in applicationDto.AdditionalQuestions)
-            {
-
-            }
-        }
-
-
         await repositoryManager.Save();
         return applicationDto;
     }
@@ -124,6 +116,7 @@ internal class ProgramService : IProgramService
             return null;
         }
         program.Workflow.Stages = (ICollection<Stage>)workflow.Stages;
+
         await repositoryManager.Save();
         return workflow;
     }

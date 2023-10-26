@@ -6,7 +6,7 @@
 public class AdditionalProgramInformation
 {
     public string ProgramType { get; set; } = string.Empty;
-    public DateTime ProgramStart { get; set; } //TODO may have to fix later. change to string to work
+    public DateTime ProgramStart { get; set; }
     public DateTime ApplicationOpen { get; set; }
     public DateTime ApplicationClose { get; set;}
     public string Duration { get; set; } = string.Empty;

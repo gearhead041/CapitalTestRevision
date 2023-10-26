@@ -20,7 +20,7 @@ public class PersonalInformation
     public string IDNumber { get; set; } = string.Empty;
     public bool IDNumberInternal { get; set; }
     public bool IDNumberHidden { get; set; }
-    public DateTime DateOfBirth { get; set; } //TODO also here, might have to change to string
+    public DateTime DateOfBirth { get; set; } 
     public bool DateOfBirthInternal { get;set; }
     public bool DateOfBirthHidden { get; set; }
     public string Gender { get; set; } = string.Empty;
