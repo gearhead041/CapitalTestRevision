@@ -14,40 +14,25 @@ namespace Repository
             RepositoryContext = repositoryContext;
         }
 
-        public IQueryable<T> GetAll(bool trackChanges, string include)
+        public IQueryable<T> GetAll(bool trackChanges)
         {
 
             IQueryable<T> query = !trackChanges ? RepositoryContext.Set<T>().AsNoTracking()
             : RepositoryContext.Set<T>();
 
-            if (include != null)
-            {
-                var includes = include.Split(',');
-                foreach (var item in includes)
-                {
-                    query.Include(item);
-                }
-            }
             return query;
 
         }
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,
-            bool trackChanges, string include)
+            bool trackChanges)
         {
             IQueryable<T> query = !trackChanges ? RepositoryContext.Set<T>()
                             .Where(expression)
                             .AsNoTracking() :
                             RepositoryContext.Set<T>()
                             .Where(expression);
-            if (include != null)
-            {
-                var includes = include.Split(',');
-                foreach (var item in includes)
-                {
-                    query.Include(item);
-                }
-            }
+
             return query;
         }
 

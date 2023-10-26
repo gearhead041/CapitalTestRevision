@@ -5,8 +5,8 @@
 /// </summary>
 public abstract class Question
 {
-    public string Type { get; set; }
-    public string QuestionString {  get; set; }
+    public string Type { get; set; } = string.Empty;
+    public string QuestionString { get; set; } = string.Empty;
 }
 
 /// <summary>

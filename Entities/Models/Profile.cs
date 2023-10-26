@@ -11,6 +11,6 @@ public class Profile
     public Experience Experience { get; set; } = new Experience();
     public bool ExperienceMandatory { get; set;}
     public bool ExperienceHidden { get; set;}
-    public string Resume { get; set; } //TODO handle file uploads into database
+    public string Resume { get; set; } = string.Empty;//TODO handle file uploads into database
     public IEnumerable<Question> Questions { get; set; } = Enumerable.Empty<Question>();
 }

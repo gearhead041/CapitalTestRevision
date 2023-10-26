@@ -1,16 +1,21 @@
-﻿using AutoMapper;
-using Contracts.Repository;
+﻿using Contracts.Repository;
 using Contracts.Services;
 
-namespace Services
+namespace Services;
+
+/// <summary>
+/// Service manager for API
+/// </summary>
+public class ServiceManager : IServiceManager
 {
-    public class ServiceManager : IServiceManager
+    //private readonly Lazy<IObjectModelService> objectModelService;
+    private readonly Lazy<IProgramService> programService;
+    public ServiceManager(IRepositoryManager repositoryManager, IMapper mapper)
     {
-        //private readonly Lazy<IObjectModelService> objectModelService;
-        public ServiceManager(IRepositoryManager repositoryManager, IMapper mapper)
-        {
-            //objectModelService = new Lazy<IObjectModelService>(()
-            //=> new ObjectModelService(repositoryManager))
-        }
+        //objectModelService = new Lazy<IObjectModelService>(()
+        //=> new ObjectModelService(repositoryManager))
+        programService = new Lazy<IProgramService>(() => new ProgramService(repositoryManager, mapper));
     }
+
+    public IProgramService ProgramService => programService.Value;
 }

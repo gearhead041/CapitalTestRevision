@@ -1,9 +1,7 @@
-﻿
-namespace Contracts.Repository
+﻿namespace Contracts.Repository;
+
+public interface IRepositoryManager
 {
-    public interface IRepositoryManager
-    {
-        //Add Model Repos here
-        //IObjectModelRepository ObjectModelRepository;
-    }
+    IProgramRepository ProgramRepository { get; }
+    Task Save();
 }

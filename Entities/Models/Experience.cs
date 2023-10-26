@@ -4,9 +4,9 @@
 /// </summary>
 public class Experience
 {
-    public string Company {  get; set; }
-    public string Title { get; set; }
-    public string Location { get; set; }
+    public string Company { get; set; } = string.Empty; 
+    public string Title { get; set; } = string.Empty;
+    public string Location { get; set; } = string.Empty;
     public DateOnly StartDate { get; set; }
     public DateOnly EndDate { get; set; } //TODO also maybe change
     public bool CurrentlyWorkingHere { get; set; }

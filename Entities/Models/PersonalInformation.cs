@@ -5,24 +5,24 @@
 /// </summary>
 public class PersonalInformation
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Email { get; set; }
-    public string Phone { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Phone { get; set; }   = string.Empty;
     public bool PhoneInternal {  get; set; }
     public bool PhoneHidden { get; set; }
-    public string Nationality { get; set; }
+    public string Nationality { get; set; } = string.Empty;
     public bool NationalityInternal { get; set; }
     public bool NationalityHidden { get; set; }
-    public string CurrentResidence { get; set; }
+    public string CurrentResidence { get; set; } = string.Empty;
     public bool CurrentResidenceInternal { get; set; }
     public bool CurrentResidenceHidden { get; set; }
-    public string IDNumber { get; set; }
+    public string IDNumber { get; set; } = string.Empty;
     public bool IDNumberInternal { get; set; }
     public bool IDNumberHidden { get; set; }
     public DateOnly DateOfBirth { get; set; } //TODO also here, might have to change to string
     public bool DateOfBirthInternal { get;set; }
     public bool DateOfBirthHidden { get; set; }
-    public string Gender { get; set; }
+    public string Gender { get; set; } = string.Empty;
     public IEnumerable<Question> Questions { get; set; } = Enumerable.Empty<Question>();
 }

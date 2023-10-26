@@ -1,14 +1,37 @@
 ﻿
-namespace Entities.Dtos;
+using Entities.Models;
 
-public class PreviewDto
+namespace Entities.Dtos;
+/// <summary>
+/// DTO class for prgram
+/// </summary>
+public class ProgramDto
 {
-    public string ProgramTitle { get; set; }
-    public string Image {  get; set; }
+    public Guid Id { get; set; }
+    public string? Title { get; set; }
     public bool IsPublished { get; set; }
-    public string ProgramSummary { get; set; }
-    public string ProgramDescription { get; set; }
-    public string[] ProgramSKilsRequired { get; set; }
-    public string ProgramBenefits { get; set; }
-    public string ApplicationCriteria { get; set; }
+    public string? Summary { get; set; }
+    public string? Description { get; set; }
+    public string[]? SkillsRequired { get; set; }
+    public string? Benefits { get; set; } = string.Empty;
+    public string? ApplicationCriteria { get; set; } = string.Empty;
+    public AdditionalProgramInformation? AdditionalProgramInformation { get; set; }
 }
+
+
+
+
+/// <summary>
+/// DTO class for creating a Program
+/// </summary>
+public class CreateProgramDto
+{
+    public string? Title { get; set; }
+    public bool IsPublished { get; set; }
+    public string? Summary { get; set; }
+    public string? Description { get; set; }           
+    public string[] Required { get; set; } = Array.Empty<string>();
+    public string? Benefits { get; set; }
+    public string? ApplicationCriteria { get; set; }
+}
+

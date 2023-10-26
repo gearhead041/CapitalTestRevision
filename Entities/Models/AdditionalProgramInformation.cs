@@ -5,13 +5,13 @@
 /// </summary>
 public class AdditionalProgramInformation
 {
-    public string ProgramType { get; set; }
+    public string ProgramType { get; set; } = string.Empty;
     public DateOnly ProgramStart { get; set; } //TODO may have to fix later. change to string to work
     public DateOnly ApplicationOpen { get; set; }
     public DateOnly ApplicationClose { get; set;}
-    public string Duration { get; set;}
+    public string Duration { get; set; } = string.Empty;
     public string? ProgramLocationString { get; set;} //can be null
     public bool FullyRemote { get; set;} // defaults to false
-    public string MinQualifications { get; set;}
+    public string MinQualifications { get; set; } = string.Empty;
     public int MaxApplications { get; set;}
 }

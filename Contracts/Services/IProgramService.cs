@@ -8,11 +8,10 @@ namespace Contracts.Services;
 public interface IProgramService
 {
     Task<ProgramDto> CreateProgram(CreateProgramDto programDto);
-    Task<ProgramDto> GetProgram(Guid programId);
-    Task<ProgramDto> UpdateProgram(Guid programId);
-    Task<PreviewDto> GetPreview(Guid programId);
-    Task<ApplicationDto> GetApplication(Guid programId);
-    Task<ApplicationDto> UpdateApplication(Guid applicationId);
-    Task<WorkflowDto> GetWorkflow(Guid programId);
-    Task<WorkflowDto> UpdateWorkflow(Guid programId);
+    Task<ProgramDto?> GetProgram(Guid programId);
+    Task<ProgramDto?> UpdateProgram(Guid programId, ProgramDto program);
+    Task<ApplicationDto?> GetApplication(Guid programId);
+    Task<ApplicationDto?> UpdateApplication(Guid applicationId, ApplicationDto application);
+    Task<WorkflowDto?> GetWorkflow(Guid programId);
+    Task<WorkflowDto?> UpdateWorkflow(Guid programId, WorkflowDto workflow);
 }

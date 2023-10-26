@@ -1,5 +1,6 @@
 using Contracts.Repository;
 using Contracts.Services;
+using Microsoft.EntityFrameworkCore;
 using Repository;
 using Services;
 
@@ -11,12 +12,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IMapper, Mapper>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     //whatever Db is used here wtih Efcoe
+    options.UseCosmos();
 });
 var app = builder.Build();
 

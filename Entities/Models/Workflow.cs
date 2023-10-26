@@ -14,7 +14,7 @@ public class Workflow
 /// </summary>
 public abstract class Stage
 {
-    public string StageName { get; set; }
+    public string StageName { get; set; } = string.Empty;
     public bool ShowStage { get; set; }
 }
 
@@ -25,9 +25,9 @@ public class Shortlisting : Stage
 
 public class VideoInterviewStage : Stage
 {
-    public string VideoInterviewQuestion { get; set; }
-    public string AdditionalInformation { get; set; }
+    public string VideoInterviewQuestion { get; set; } = string.Empty;
+    public string AdditionalInformation { get; set; } = string.Empty;
     public int MaxDurationOfVideo { get; set;}
-    public string DurationUnit { get; set; }
+    public string DurationUnit { get; set; } = string.Empty;
     public int DeadlineForSubmission { get; set; }
 }
