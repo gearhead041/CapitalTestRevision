@@ -9,5 +9,5 @@ public class ApplicationDto
     public string? CoverImage { get; set; }
     public PersonalInformation? PersonalInformation { get; set; }
     public Profile? Profile { get; set; }
-    public IEnumerable<Question>? AdditionalQuestions { get; set; }
+    public IEnumerable<Question> AdditionalQuestions { get; set; } = Enumerable.Empty<Question>();
 }

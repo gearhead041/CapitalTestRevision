@@ -18,4 +18,7 @@ public class ProgramRepositroy : RepositoryBase<Program>, IProgramRepository
 
     public void UpdateProgram(Program program)
         => Update(program);
+
+    public void DeleteProgram(Program program)
+        => Delete(program);
 }

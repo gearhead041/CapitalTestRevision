@@ -32,7 +32,7 @@ internal class ProgramService : IProgramService
         try
         {
             var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
-            return mapper.GetApplicationDto(program.ApplicationTemplate);
+            return mapper.GetApplicationDto(program!.ApplicationTemplate);
         }
         catch (CosmosException)
         {
@@ -46,7 +46,7 @@ internal class ProgramService : IProgramService
         try
         {
             var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
-        return mapper.GetProgramDto(program);
+            return mapper.GetProgramDto(program!);
         }
         catch (CosmosException)
         {
@@ -67,18 +67,32 @@ internal class ProgramService : IProgramService
 
     public async Task<ApplicationDto?> UpdateApplication(Guid programId, ApplicationDto applicationDto)
     {
-        var program = await repositoryManager.ProgramRepository.GetProgram(programId, true);
-        if (program == null)
+        var oldProgram = await repositoryManager.ProgramRepository.GetProgram(programId, true);
+        if (oldProgram == null)
         {
             return null;
         }
-        program.ApplicationTemplate = new()
+        repositoryManager.ProgramRepository.DeleteProgram(oldProgram);
+        await repositoryManager.Save();
+        var newProgram = oldProgram;
+        repositoryManager.ProgramRepository.CreateProgram(newProgram);
+        newProgram.ApplicationTemplate = new() 
         {
-            CoverImage = applicationDto.CoverImage ?? program.ApplicationTemplate.CoverImage,
-            PersonalInformation = applicationDto.PersonalInformation?? program.ApplicationTemplate.PersonalInformation,
-            Profile = applicationDto.Profile ?? program.ApplicationTemplate.Profile,
-            AdditionalQuestions = (ICollection<Question>)(applicationDto.AdditionalQuestions ?? program.ApplicationTemplate.AdditionalQuestions),
+            CoverImage = applicationDto.CoverImage ?? oldProgram.ApplicationTemplate.CoverImage,
+            PersonalInformation = applicationDto.PersonalInformation ?? oldProgram.ApplicationTemplate.PersonalInformation,
+            Profile = applicationDto.Profile ?? oldProgram.ApplicationTemplate.Profile,
+            AdditionalQuestions = (ICollection<Question>)(applicationDto.AdditionalQuestions ?? oldProgram.ApplicationTemplate.AdditionalQuestions),
         };
+
+        if(applicationDto.AdditionalQuestions != null)
+        {
+            foreach (var question in applicationDto.AdditionalQuestions)
+            {
+
+            }
+        }
+
+
         await repositoryManager.Save();
         return applicationDto;
     }
@@ -92,12 +106,12 @@ internal class ProgramService : IProgramService
         }
         program.Title = programDto.Title ?? program.Title;
         program.Summary = programDto.Summary ?? program.Summary;
-        program.Description = programDto.Description?? program.Description;
-        program.SkillsRequired = programDto.SkillsRequired?? program.SkillsRequired;
+        program.Description = programDto.Description ?? program.Description;
+        program.SkillsRequired = programDto.SkillsRequired ?? program.SkillsRequired;
         program.Benefits = programDto.Benefits ?? program.Benefits;
         program.ApplicationCriteria = programDto.ApplicationCriteria ?? program.ApplicationCriteria;
         program.IsPublished = programDto.IsPublished;
-        program.AdditionalProgramInformation = programDto.AdditionalProgramInformation?? program.AdditionalProgramInformation;
+        program.AdditionalProgramInformation = programDto.AdditionalProgramInformation ?? program.AdditionalProgramInformation;
         await repositoryManager.Save();
         return programDto;
     }

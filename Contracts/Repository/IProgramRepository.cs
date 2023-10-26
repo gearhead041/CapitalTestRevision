@@ -7,4 +7,5 @@ public interface IProgramRepository
     void CreateProgram(Program program);
     void UpdateProgram(Program program);
     Task<Program?> GetProgram(Guid programId, bool trackChanges);
+    void DeleteProgram(Program program);
 }
