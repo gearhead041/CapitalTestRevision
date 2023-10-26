@@ -13,5 +13,17 @@ namespace Server.Controllers
         {
             this.serviceManager = serviceManager;
         }
+
+        ///<summary>
+        ///Create a program in the database. Returns a ProgramDetailDto Class.
+        ///</summary>
+        ///<param name="programDetailsDto"></param>
+        [HttpPost]
+        public async Task<ActionResult<ProgramDetailsDto>> CreateProgramDetail([FromBody] CreateProgramDetailsDto programDetailsDto)
+        {
+            return await serviceManager.ProgramService.CreateProgramDetails(programDetailsDto);
+        }
+
+        [Http]
     }
 }
