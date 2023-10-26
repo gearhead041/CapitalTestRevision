@@ -1,4 +1,5 @@
 using Contracts.Services;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Server.Controllers
@@ -20,9 +21,9 @@ namespace Server.Controllers
         /// <param name="programId"></param>
         /// <returns>A single Dto, or NotFound if the program is not found.</returns>
         [HttpGet("{programId:guid}")]
-        public async Task<ActionResult<PreviewDto>> GetProgramDetail([FromRoute] Guid programId)
+        public async Task<ActionResult<ProgramDto>> GetProgramDetail([FromRoute] Guid programId)
         {
-            var preview = await serviceManager.ProgramService.GetPreview(programId);
+            var preview = await serviceManager.ProgramService.GetProgram(programId);
             if (preview == null)
             {
                 return NotFound();

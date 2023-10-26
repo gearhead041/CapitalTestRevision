@@ -5,14 +5,14 @@
 /// </summary>
 public class Workflow
 {
-    public IEnumerable<Stage> Stages { get; set; } = Enumerable.Empty<Stage>();
+    public ICollection<Stage> Stages { get; set; } = new List<Stage>();
 }
 
 
 /// <summary>
 /// Represents the base class for stages in a workflow
 /// </summary>
-public abstract class Stage
+public class Stage
 {
     public string StageName { get; set; } = string.Empty;
     public bool ShowStage { get; set; }

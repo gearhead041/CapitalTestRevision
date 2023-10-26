@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the base question type.
 /// </summary>
-public abstract class Question
+public class Question
 {
     public string Type { get; set; } = string.Empty;
     public string QuestionString { get; set; } = string.Empty;

@@ -1,4 +1,5 @@
 using Contracts.Services;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Server.Controllers
@@ -48,9 +49,9 @@ namespace Server.Controllers
         /// <param name="id"></param>
         /// <returns>A single program detail or BadRequest if the program is not found.</returns>
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<ProgramDto>> UpdateProgramDetail([FromRoute]Guid id)
+        public async Task<ActionResult<ProgramDto>> UpdateProgramDetail([FromRoute]Guid id, [FromBody] ProgramDto programDto)
         {
-           var programDetail = await serviceManager.ProgramService.UpdateProgram(id);
+           var programDetail = await serviceManager.ProgramService.UpdateProgram(id, programDto);
             if (programDetail == null)
             {
                 return BadRequest("prgram does not exist");

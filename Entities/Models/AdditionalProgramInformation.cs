@@ -6,9 +6,9 @@
 public class AdditionalProgramInformation
 {
     public string ProgramType { get; set; } = string.Empty;
-    public DateOnly ProgramStart { get; set; } //TODO may have to fix later. change to string to work
-    public DateOnly ApplicationOpen { get; set; }
-    public DateOnly ApplicationClose { get; set;}
+    public DateTime ProgramStart { get; set; } //TODO may have to fix later. change to string to work
+    public DateTime ApplicationOpen { get; set; }
+    public DateTime ApplicationClose { get; set;}
     public string Duration { get; set; } = string.Empty;
     public string? ProgramLocationString { get; set;} //can be null
     public bool FullyRemote { get; set;} // defaults to false

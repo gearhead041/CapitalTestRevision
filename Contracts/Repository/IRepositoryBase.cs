@@ -11,6 +11,5 @@ namespace Contracts.Repository
         void Create(T entity);
         void Delete(T entity);
         void Update(T entity);
-        Task<Program?> GetProgram(Guid programId, bool trackChanges);
     }
 }

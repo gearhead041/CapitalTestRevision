@@ -8,7 +8,7 @@ public class Education
     public string Degree { get; set; } = string.Empty;
     public string CourseName { get; set; } = string.Empty;
     public string LocationOfStudy { get; set; } = string.Empty;
-    public DateOnly StartDate {  get; set; } //TODO change date in case
-    public DateOnly EndDate { get; set; }
+    public DateTime StartDate {  get; set; }
+    public DateTime EndDate { get; set; }
     public bool CurrentlyStudying { get; set; }
 }

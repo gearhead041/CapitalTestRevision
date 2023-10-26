@@ -2,6 +2,7 @@
 using Contracts.Services;
 using Entities.Dtos;
 using Entities.Models;
+using Microsoft.Azure.Cosmos;
 
 namespace Services;
 
@@ -28,24 +29,29 @@ internal class ProgramService : IProgramService
 
     public async Task<ApplicationDto?> GetApplication(Guid programId)
     {
-        var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
-        if (program == null)
+        try
+        {
+            var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
+            return mapper.GetApplicationDto(program.ApplicationTemplate);
+        }
+        catch (CosmosException)
         {
             return null;
         }
 
-        return mapper.GetApplicationDto(program.ApplicationTemplate);
     }
 
     public async Task<ProgramDto?> GetProgram(Guid programId)
     {
-        var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
-        if (program == null)
+        try
+        {
+            var program = await repositoryManager.ProgramRepository.GetProgram(programId, false);
+        return mapper.GetProgramDto(program);
+        }
+        catch (CosmosException)
         {
             return null;
         }
-
-        return mapper.GetProgramDto(program);
     }
 
     public async Task<WorkflowDto?> GetWorkflow(Guid programId)
@@ -71,7 +77,7 @@ internal class ProgramService : IProgramService
             CoverImage = applicationDto.CoverImage ?? program.ApplicationTemplate.CoverImage,
             PersonalInformation = applicationDto.PersonalInformation?? program.ApplicationTemplate.PersonalInformation,
             Profile = applicationDto.Profile ?? program.ApplicationTemplate.Profile,
-            AdditionalQuestions = applicationDto.AdditionalQuestions ?? program.ApplicationTemplate.AdditionalQuestions,
+            AdditionalQuestions = (ICollection<Question>)(applicationDto.AdditionalQuestions ?? program.ApplicationTemplate.AdditionalQuestions),
         };
         await repositoryManager.Save();
         return applicationDto;
@@ -103,7 +109,7 @@ internal class ProgramService : IProgramService
         {
             return null;
         }
-        program.Workflow.Stages = workflow.Stages;
+        program.Workflow.Stages = (ICollection<Stage>)workflow.Stages;
         await repositoryManager.Save();
         return workflow;
     }

@@ -18,7 +18,9 @@ builder.Services.AddScoped<IMapper, Mapper>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     //whatever Db is used here wtih Efcoe
-    options.UseCosmos();
+    options.UseCosmos(accountEndpoint: "https://localhost:8081",
+        accountKey: "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
+        databaseName:"CapitalPlacementRevision");
 });
 var app = builder.Build();
 

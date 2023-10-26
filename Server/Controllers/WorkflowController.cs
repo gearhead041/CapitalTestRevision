@@ -38,14 +38,15 @@ namespace Server.Controllers
         /// <param name="programId"></param>
         /// <returns>A single workflowDto or BadRequest if the program is not found.</returns>
         [HttpPut("{programId:guid}")]
-        public async Task<ActionResult<WorkflowDto>> UpdateProgramDetail([FromRoute]Guid programId)
+        public async Task<ActionResult<WorkflowDto>> UpdateWorkflow([FromRoute]Guid programId, [FromBody] WorkflowDto workflowDto)
         {
-           var workflow = await serviceManager.ProgramService.UpdateWorkflow(programId);
+           var workflow = await serviceManager.ProgramService.UpdateWorkflow(programId,workflowDto);
             if (workflow == null)
             {
                 return BadRequest("prgram does not exist");
             }
             return Ok(workflow);
         }
+
     }
 }

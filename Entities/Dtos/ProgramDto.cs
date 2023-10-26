@@ -30,7 +30,7 @@ public class CreateProgramDto
     public bool IsPublished { get; set; }
     public string? Summary { get; set; }
     public string? Description { get; set; }           
-    public string[] Required { get; set; } = Array.Empty<string>();
+    public string[] SkillsRequired { get; set; } = Array.Empty<string>();
     public string? Benefits { get; set; }
     public string? ApplicationCriteria { get; set; }
 }

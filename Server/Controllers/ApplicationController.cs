@@ -1,4 +1,5 @@
 ﻿using Contracts.Services;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Server.Controllers
@@ -30,10 +31,10 @@ namespace Server.Controllers
             return Ok(application);
         }
 
-        [HttpPut("{programId:guid")]
-        public async Task<ActionResult<ApplicationDto>> UpdateApplication(Guid programId)
+        [HttpPut("{programId:guid}")]
+        public async Task<ActionResult<ApplicationDto>> UpdateApplication(Guid programId, ApplicationDto applicationDto)
         {
-            var application = await serviceManager.ProgramService.UpdateApplication(programId);
+            var application = await serviceManager.ProgramService.UpdateApplication(programId,applicationDto);
             if (application == null)
             {
                 return BadRequest();
