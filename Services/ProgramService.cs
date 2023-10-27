@@ -145,8 +145,15 @@ internal class ProgramService : IProgramService
                 {
                     newProgram.ApplicationTemplate.CoverImageUpload = mapper.MapToFileUpload(newCoverImageUpload);
                     //delete old file first
-                    await fileUploadService.DeleteFileAsync(oldProgram.ApplicationTemplate.CoverImage);
-                    Console.WriteLine($"deleting old file:{oldCoverImageUpload.FileName}");
+                    try
+                    {
+                        await fileUploadService.DeleteFileAsync(oldProgram.ApplicationTemplate.CoverImage);
+                        Console.WriteLine($"deleted old file:{oldCoverImageUpload.FileName}");
+                    }
+                    catch (Exception e)
+                    {
+                        await Console.Out.WriteLineAsync("deleting image file failed:\n" + e.Message);
+                    }
                     //upload file to cloud service and save url
                     try
                     {
@@ -157,7 +164,6 @@ internal class ProgramService : IProgramService
                         Console.WriteLine("image upload Failed\n" + e.ToString());
                     }
                 }
-                //if file is the same do nothing
             }
             //if no old file exists
             else
