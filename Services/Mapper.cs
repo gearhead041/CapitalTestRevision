@@ -1,6 +1,7 @@
 ﻿using Contracts.Services;
 using Entities.Dtos;
 using Entities.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Services;
 
@@ -12,8 +13,8 @@ public class Mapper : IMapper
     /// </summary>
     /// <param name="applicationFormTemplate">ApplicationFormTemplate to Map</param>
     /// <returns>An instance of ApplicationDto</returns>
-    public ApplicationDto GetApplicationDto(ApplicationFormTemplate applicationFormTemplate)
-         => new ApplicationDto
+    public ApplicationDto MapToApplicationDto(ApplicationFormTemplate applicationFormTemplate)
+         => new()
          {
              CoverImage = applicationFormTemplate.CoverImage,
              PersonalInformation = applicationFormTemplate.PersonalInformation,
@@ -21,14 +22,22 @@ public class Mapper : IMapper
              AdditionalQuestions = applicationFormTemplate.AdditionalQuestions,
          };
 
+    //Map from an IForm to a FileUpload for saving file metadata in the database
+    public FileUpload MapToFileUpload(IFormFile file)
+        => new()
+        {
+            FileName = file.FileName,
+            ContentType = file.ContentType,
+            Length = file.Length,
+        };
 
     /// <summary>
     /// Maps type CreateProgramDto to Program
     /// </summary>
     /// <param name="programDto">ProgramDto to Map</param>
     /// <returns>An instance of Program</returns>
-    public Program GetProgram(CreateProgramDto programDto)
-        => new Program
+    public Program MapToProgram(CreateProgramDto programDto)
+        => new()
         {
             Title = programDto.Title!,
             IsPublished = programDto.IsPublished,
@@ -43,8 +52,8 @@ public class Mapper : IMapper
     /// </summary>
     /// <param name="program">Program to Map</param>
     /// <returns>An instance of ProgramDto</returns>
-    public ProgramDto GetProgramDto(Program program)
-        => new ProgramDto
+    public ProgramDto MapToProgramDto(Program program)
+        => new()
         {
             Id = program.Id,
             Title = program.Title,
@@ -61,8 +70,8 @@ public class Mapper : IMapper
     /// </summary>
     /// <param name="workflow">workflow to Map</param>
     /// <returns>An instance of WorkflowDto</returns>
-    public WorkflowDto GetWorkflowDto(Workflow workflow)
-        => new WorkflowDto
+    public WorkflowDto MapToWorkflowDto(Workflow workflow)
+        => new()
         {
             Stages = workflow.Stages,
         };

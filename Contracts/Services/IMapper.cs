@@ -1,13 +1,15 @@
 ﻿
 using Entities.Dtos;
 using Entities.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Contracts.Services;
 
 public interface IMapper
 {
-    ProgramDto GetProgramDto(Program program);
-    Program GetProgram(CreateProgramDto programdto);
-    WorkflowDto GetWorkflowDto(Workflow workflow);
-    ApplicationDto GetApplicationDto(ApplicationFormTemplate applicationFormTemplate);
+    ProgramDto MapToProgramDto(Program program);
+    Program MapToProgram(CreateProgramDto programdto);
+    WorkflowDto MapToWorkflowDto(Workflow workflow);
+    ApplicationDto MapToApplicationDto(ApplicationFormTemplate applicationFormTemplate);
+    FileUpload MapToFileUpload(IFormFile file);
 }

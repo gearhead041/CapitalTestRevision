@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Entities.Dtos;
 /// <summary>
@@ -6,8 +7,10 @@ namespace Entities.Dtos;
 /// </summary>
 public class ApplicationDto
 {
-    public string? CoverImage { get; set; }
-    public PersonalInformation? PersonalInformation { get; set; }
-    public Profile? Profile { get; set; }
-    public IEnumerable<Question> AdditionalQuestions { get; set; } = Enumerable.Empty<Question>();
+
+    public string? CoverImage { get; set; } = null;
+    public IFormFile? CoverImageUpload { get; set; } = null;
+    public PersonalInformation PersonalInformation { get; set; } = new PersonalInformation();
+    public Profile Profile { get; set; } = new Profile();
+    public ICollection<Question> AdditionalQuestions { get; set; } = new List<Question>();
 }

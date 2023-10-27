@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IMapper, Mapper>();
+builder.Services.AddScoped<IFileUploadService,CloudinaryFileUploadService>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     //whatever Db is used here wtih Efcoe

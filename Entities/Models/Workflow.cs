@@ -17,9 +17,9 @@ public class Stage
     public string StageName { get; set; } = string.Empty;
     //TODO validation for stage type
     public bool ShowStage { get; set; }
-    public string? VideoInterviewQuestion { get; set; }
-    public string? AdditionalInformation { get; set; }
-    public int MaxDurationOfVideo { get; set;}
-    public string? DurationUnit { get; set; }
-    public int DeadlineForSubmission { get; set; }
+    public string? VideoInterviewQuestion { get; set; } = null;
+    public string? AdditionalInformation { get; set; } = null;
+    public int? MaxDurationOfVideo { get; set; } = null;
+    public string? DurationUnit { get; set; } = null;
+    public int? DeadlineForSubmission { get; set; } = null;
 }

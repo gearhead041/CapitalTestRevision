@@ -10,7 +10,7 @@ public class AdditionalProgramInformation
     public DateTime ApplicationOpen { get; set; }
     public DateTime ApplicationClose { get; set;}
     public string Duration { get; set; } = string.Empty;
-    public string? ProgramLocationString { get; set;} //can be null
+    public string ProgramLocationString { get; set;} = string.Empty;
     public bool FullyRemote { get; set;} // defaults to false
     public string MinQualifications { get; set; } = string.Empty;
     public int MaxApplications { get; set;}

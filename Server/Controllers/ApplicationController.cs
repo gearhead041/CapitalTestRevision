@@ -32,12 +32,12 @@ namespace Server.Controllers
         }
 
         [HttpPut("{programId:guid}")]
-        public async Task<ActionResult<ApplicationDto>> UpdateApplication(Guid programId, ApplicationDto applicationDto)
+        public async Task<ActionResult<ApplicationDto>> UpdateApplication(Guid programId, [FromForm]ApplicationDto applicationDto)
         {
             var application = await serviceManager.ProgramService.UpdateApplication(programId,applicationDto);
             if (application == null)
             {
-                return BadRequest();
+                return BadRequest("Program not found.");
             }
             return Ok(application);
         }
