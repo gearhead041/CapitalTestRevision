@@ -24,7 +24,7 @@ namespace Server.Controllers
         public async Task<ActionResult<WorkflowDto>> GetProgramDetail([FromRoute] Guid programId)
         {
             var workflow = await serviceManager.ProgramService.GetWorkflow(programId);
-            if(workflow == null)
+            if (workflow == null)
             {
                 return NotFound();
             }
@@ -38,9 +38,9 @@ namespace Server.Controllers
         /// <param name="programId"></param>
         /// <returns>A single workflowDto or BadRequest if the program is not found.</returns>
         [HttpPut("{programId:guid}")]
-        public async Task<ActionResult<WorkflowDto>> UpdateWorkflow([FromRoute]Guid programId, [FromBody] WorkflowDto workflowDto)
+        public async Task<ActionResult<WorkflowDto>> UpdateWorkflow([FromRoute] Guid programId, [FromBody] WorkflowDto workflowDto)
         {
-           var workflow = await serviceManager.ProgramService.UpdateWorkflow(programId,workflowDto);
+            var workflow = await serviceManager.ProgramService.UpdateWorkflow(programId, workflowDto);
             if (workflow == null)
             {
                 return BadRequest("prgram does not exist");

@@ -1,6 +1,4 @@
-﻿
-using Entities.Models;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace Contracts.Repository
 {

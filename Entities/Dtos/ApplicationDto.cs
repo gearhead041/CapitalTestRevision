@@ -12,5 +12,5 @@ public class ApplicationDto
     public IFormFile? CoverImageUpload { get; set; } = null;
     public PersonalInformation PersonalInformation { get; set; } = new PersonalInformation();
     public Profile Profile { get; set; } = new Profile();
-    public ICollection<Question> AdditionalQuestions { get; set; } = new List<Question>();
+    public ICollection<Question>? AdditionalQuestions { get; set; }
 }

@@ -196,7 +196,7 @@ internal class ProgramService : IProgramService
         //manual mapping here. I still think it's better than automapper in this case
         program.Title = programDto.Title;
         program.Summary = programDto.Summary;
-        program.Description = programDto.Description ;
+        program.Description = programDto.Description;
         program.SkillsRequired = programDto.SkillsRequired;
         program.Benefits = programDto.Benefits;
         program.ApplicationCriteria = programDto.ApplicationCriteria;

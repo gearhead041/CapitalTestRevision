@@ -1,7 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
-
-namespace Entities.Models;
+﻿namespace Entities.Models;
 
 /// <summary>
 /// Represents the Application Form for a Program in the database.
@@ -12,5 +9,5 @@ public class ApplicationFormTemplate
     public FileUpload? CoverImageUpload { get; set; } = null;
     public PersonalInformation PersonalInformation { get; set; } = new PersonalInformation();
     public Profile Profile { get; set; } = new Profile();
-    public ICollection<Question> AdditionalQuestions { get; set; } = new List<Question>();
+    public ICollection<Question>? AdditionalQuestions { get; set; }
 }

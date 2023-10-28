@@ -35,7 +35,7 @@ namespace Server.Controllers
         public async Task<ActionResult<ProgramDto>> GetProgramDetail([FromRoute] Guid id)
         {
             var programDetail = await serviceManager.ProgramService.GetProgram(id);
-            if(programDetail == null)
+            if (programDetail == null)
             {
                 return NotFound();
             }
@@ -49,9 +49,9 @@ namespace Server.Controllers
         /// <param name="id"></param>
         /// <returns>A single program detail or BadRequest if the program is not found.</returns>
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<ProgramDto>> UpdateProgramDetail([FromRoute]Guid id, [FromBody] ProgramDto programDto)
+        public async Task<ActionResult<ProgramDto>> UpdateProgramDetail([FromRoute] Guid id, [FromBody] ProgramDto programDto)
         {
-           var programDetail = await serviceManager.ProgramService.UpdateProgram(id, programDto);
+            var programDetail = await serviceManager.ProgramService.UpdateProgram(id, programDto);
             if (programDetail == null)
             {
                 return BadRequest("prgram does not exist");
