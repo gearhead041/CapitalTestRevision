@@ -29,7 +29,7 @@ public class Stage : IValidatableObject
     //Setting 
     public string? VideoInterviewQuestion { get; set; }
     public string? AdditionalInformation { get; set; }
-    public int? MaxDurationOfVideo{ get; set; }
+    public int? MaxDurationOfVideo { get; set; }
     public string? DurationUnit { get; set; } = null;
     public int? DeadlineForSubmission { get; set; } = null;
 

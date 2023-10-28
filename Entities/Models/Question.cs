@@ -9,7 +9,7 @@ namespace Entities.Models;
 /// Represents the base question type.
 /// </summary>
 [ModelBinder(BinderType = typeof(MetadataValueModelBinder))]
-public class Question: IValidatableObject
+public class Question : IValidatableObject
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public QuestionType Type { get; set; }
